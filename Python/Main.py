@@ -1,0 +1,3 @@
+from services.usuario_services.service_list_usuario import lista_usuario
+
+lista_usuario()
