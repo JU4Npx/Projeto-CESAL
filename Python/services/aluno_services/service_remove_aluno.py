@@ -20,12 +20,13 @@ def remover_aluno():
             if ID_busca == 0:
                 break
             else:
-                cursor.execute("DELETE * FROM aluno WHERE ID_aluno = %s", (ID_busca,))
+                cursor.execute("DELETE FROM aluno WHERE ID_aluno = %s", (ID_busca,))
                 con.commit()
-                print(f"Aluno de ID{ID_busca}, foi removido com sucesso!")
+                print(f"Aluno de ID {ID_busca}, foi removido com sucesso!")
                 break
         except Exception as e:
-            print(f"Erro ao tentar remover o aluno: {e}")
+            print(f"Erro ao tentar remover o aluno")
+            print(f"Erro {e} ")
         finally:
             cursor.close()
             con.close()

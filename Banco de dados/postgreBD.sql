@@ -37,4 +37,9 @@ role VARCHAR(20) NOT NULL DEFAULT 'usuario'
 
 --usuários pré programados: 
 --AdminCESAL@CESAL.edu.br senha: admCESAL123
---juninho@CESAL.edu.br senha: juninhoCESAL12
+--juninho@CESAL.edu.br senha: juninhoexadm1234
+
+create table matricula
+id aluno
+id curso bytea
+data 

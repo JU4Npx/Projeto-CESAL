@@ -15,22 +15,23 @@ def lista_curso():
     for dado in dados_curso:
         print(f"ID: {dado[0]}  Nome: {dado[1]}  Descrição: {dado[2]}  Valor: R${dado[3]}  Carga Horária: {dado[4]}  Vagas: {dado[5]}")
         print(f"-" * 120)
+    input("Pressione ENTER para voltar ao menu...")
     cursor.close()
     con.close()
 
 def editar_lista_curso():
-    con = conexaoBD()
-    cursor = con.cursor()
-    cursor.execute("SELECT * FROM curso ORDER BY ID_curso")
-    dados_curso = cursor.fetchall()
-    print(f"-" * 30)
-    print("        LISTA DE CURSOS        ")
-    print(f"-" * 30)
-    print("")
-    for dado in dados_curso:
-        print(f"ID: {dado[0]}  Nome: {dado[1]}  Descrição: {dado[2]}  Valor: {dado[3]}  Carga Horária: {dado[4]}  Vagas: {dado[5]}")
-        print(f"-" * 120)
     while True:
+        con = conexaoBD()
+        cursor = con.cursor()
+        cursor.execute("SELECT * FROM curso ORDER BY ID_curso")
+        dados_curso = cursor.fetchall()
+        print(f"-" * 30)
+        print("        LISTA DE CURSOS        ")
+        print(f"-" * 30)
+        print("")
+        for dado in dados_curso:
+            print(f"ID: {dado[0]}  Nome: {dado[1]}  Descrição: {dado[2]}  Valor: {dado[3]}  Carga Horária: {dado[4]}  Vagas: {dado[5]}")
+            print(f"-" * 120)
         try:
             print("")
             ID_busca = (input("Digite o ID do curso que deseja editar, ou 0 para voltar: "))
@@ -74,11 +75,11 @@ def editar_lista_curso():
                     elif opcao == 3:
                         while True:
                             try:
-                                novo_valor = float(input("Digite o novo valor: "))
+                                novo_valor = float(input("Digite o novo valor: R$"))
                                 if novo_valor <= 0:
                                     print("Número inválido, o valor não pode ser menor ou igual a zero.")
                                 else:
-                                    cursor.execute("UPDATE curso SET nome_curso = %s WHERE ID_curso = %s", (novo_valor, ID_busca))
+                                    cursor.execute("UPDATE curso SET valor_curso = %s WHERE ID_curso = %s", (novo_valor, ID_busca))
                                     con.commit()
                                     print("Valor editado com sucesso!")
                                     time.sleep(1.5)
@@ -89,7 +90,7 @@ def editar_lista_curso():
                     elif opcao == 4:
                         while True:
                             try:
-                                nova_carga_horaria = int(input("Digite a nova carga horária"))
+                                nova_carga_horaria = int(input("Digite a nova carga horária: "))
                                 if nova_carga_horaria <= 0:
                                     print("Valor inválido, a carga horária não pode ser menor, ou igual a zero")
                                 else:
@@ -104,7 +105,7 @@ def editar_lista_curso():
                     elif opcao == 5:
                         while True:
                             try:
-                                novo_numero_vagas = int(input("Digite o novo novo número de vagas"))
+                                novo_numero_vagas = int(input("Digite o novo novo número de vagas: "))
                                 if novo_numero_vagas < 0:
                                     print("Valor inválido, a carga horária não pode ser menor que zero")
                                 else:

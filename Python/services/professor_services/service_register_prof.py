@@ -21,9 +21,9 @@ def cadastro_professor():
         else:
             break
     while True:
-        telefone_professor = input("Por favor, digite o telefone do professor: ")
-        if len(telefone_professor) < 12:
-            print("Telefone inválido. Deve conter pelo menos 12 dígitos.")
+        telefone_professor = input("Por favor, digite o telefone do professor (com '55' + DDD e os números sem espaço): ")
+        if len(telefone_professor) != 13:
+            print("Telefone inválido.")
         elif not telefone_professor.isdigit():
             print("Telefone inválido. Use apenas números.")
         else:

@@ -22,8 +22,8 @@ def cadastro_aluno():
     endereco_aluno = input("Por favor, digite o endereço do aluno: ")
     while True:
         telefone_aluno = input("Por favor, digite o telefone do aluno(com '55' + DDD e os números sem espaço): ")
-        if len(telefone_aluno) < 12:
-            print("Telefone inválido. Deve conter pelo menos 12 dígitos.")
+        if len(telefone_aluno) != 13:
+            print("Telefone inválido.")
         elif not telefone_aluno.isdigit():
             print("Telefone inválido. Use apenas números.")
         else:

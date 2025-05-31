@@ -1,5 +1,6 @@
 from services.tools.tools import validacao_email
 from services.usuario_services.service_conect_usuario import conexao_cadastro_usuario
+import pwinput
 
 
 def cadastro_usuario():
@@ -12,7 +13,7 @@ def cadastro_usuario():
             break
     while True:
         try:
-         senha_usuario = input("Por favor, digite a senha do usuário (mínimo 8 caractéres): ")
+         senha_usuario = pwinput.pwinput(prompt ="Por favor, digite a senha do usuário (mínimo 8 caractéres): ", mask='*')
          if len(senha_usuario) < 8:
             print("A senha precisar ter no mínimo 8 caracteres!")
          else:
