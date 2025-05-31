@@ -1,4 +1,4 @@
-from services.tools import validacao_email
+from services.tools.tools import validacao_email
 from services.professor_services.service_conect_prof import conexao_cadastro_professor
 
 def cadastro_professor():

@@ -1,7 +1,7 @@
 from config.conexao import conexaoBD
-from tools import validacao_email
-import bcrypt
+from tools.tools import validacao_email
 import base64
+import bcrypt    
 import time
 import os
 
@@ -61,7 +61,7 @@ def editar_lista_usuario():
                     opcao = int(input("Escolha a opção (0-5): "))
                     
                     if opcao == 1:
-                        novo_nome = int(input("Digite o novo nome: "))
+                        novo_nome = input("Digite o novo nome: ")
                         cursor.execute("UPDATE usuario SET nome_usuario = %s WHERE ID_usuario = %s", (novo_nome, ID_busca))
                         con.commit()
                         print("Nome alterado com sucesso!")

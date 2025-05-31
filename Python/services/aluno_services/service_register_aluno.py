@@ -1,5 +1,5 @@
 from services.aluno_services.service_conect_aluno import conexao_cadastro_aluno
-from services.tools import validacao_email
+from services.tools.tools import validacao_email
 
 def cadastro_aluno():
     nome_aluno     = input("Por favor, digite o nome do aluno: ")

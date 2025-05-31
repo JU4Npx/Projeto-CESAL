@@ -1,5 +1,5 @@
 from config.conexao import conexaoBD
-from services.tools import validacao_email
+from services.tools.tools import validacao_email
 import time
 import os
 

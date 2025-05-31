@@ -1,4 +1,4 @@
-from services.tools import validacao_email
+from services.tools.tools import validacao_email
 from services.usuario_services.service_conect_usuario import conexao_cadastro_usuario
 
 

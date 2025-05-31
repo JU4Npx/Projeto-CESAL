@@ -1,6 +1,6 @@
-import bcrypt
 import base64
 from config.conexao import conexaoBD
+import bcrypt   
 
 
 def conexao_cadastro_usuario(nome_usuario, email_usuario, senha_usuario, role):
