@@ -643,3 +643,28 @@ INSERT INTO matricula (ID_aluno, ID_curso) VALUES
 (57, 47),
 (58, 1),
 (59, 2);
+
+SELECT
+    a.nome_aluno AS Aluno,
+    c.nome_curso AS Curso,
+    d.nome_disciplina AS Disciplina,
+    -- Usa string_agg para listar múltiplos professores se uma disciplina tiver mais de um
+    COALESCE(string_agg(p.nome_professor, ', ') FILTER (WHERE p.nome_professor IS NOT NULL), 'Nenhum Professor Designado') AS Professor
+FROM
+    aluno AS a
+JOIN
+    matricula AS m ON a.id_aluno = m.id_aluno
+JOIN
+    curso AS c ON m.id_curso = c.id_curso
+JOIN
+    curso_disciplina AS cd ON c.id_curso = cd.id_curso
+JOIN
+    disciplina AS d ON cd.id_disciplina = d.id_disciplina
+LEFT JOIN
+    professor_disciplina AS pd ON d.id_disciplina = pd.id_disciplina
+LEFT JOIN
+    professor AS p ON pd.id_professor = p.id_professor
+GROUP BY
+    a.id_aluno, a.nome_aluno, c.id_curso, c.nome_curso, d.id_disciplina, d.nome_disciplina
+ORDER BY
+    a.nome_aluno, c.nome_curso, d.nome_disciplina;
