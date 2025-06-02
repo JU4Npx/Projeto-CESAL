@@ -38,6 +38,7 @@ role VARCHAR(20) NOT NULL DEFAULT 'usuario'
 --usuários pré programados: 
 --AdminCESAL@CESAL.edu.br senha: admCESAL123
 --juninho@CESAL.edu.br senha: juninhoexadm1234
+--
 
 create table matricula(
 ID_matricula serial primary key,
@@ -644,6 +645,26 @@ INSERT INTO matricula (ID_aluno, ID_curso) VALUES
 (58, 1),
 (59, 2);
 
+
+SELECT
+    c.nome_curso AS Curso,
+    d.nome_disciplina AS Disciplina
+FROM
+    curso AS c
+JOIN
+    curso_disciplina AS cd ON c.ID_curso = cd.ID_curso
+JOIN
+    disciplina AS d ON cd.ID_disciplina = d.ID_disciplina
+ORDER BY
+    c.nome_curso, d.nome_disciplina;
+
+
+
+
+
+
+
+
 SELECT
     a.nome_aluno AS Aluno,
     c.nome_curso AS Curso,
@@ -668,3 +689,22 @@ GROUP BY
     a.id_aluno, a.nome_aluno, c.id_curso, c.nome_curso, d.id_disciplina, d.nome_disciplina
 ORDER BY
     a.nome_aluno, c.nome_curso, d.nome_disciplina;
+
+
+SELECT
+    C.nome_curso AS Curso,
+    A.nome_aluno AS Aluno,
+    D.nome_disciplina AS Disciplina
+FROM
+    curso AS C
+INNER JOIN
+    matricula AS M ON C.ID_curso = M.ID_curso
+INNER JOIN
+    aluno AS A ON M.ID_aluno = A.ID_aluno
+INNER JOIN
+    curso_disciplina AS CD ON C.ID_curso = CD.ID_curso
+INNER JOIN
+    disciplina AS D ON CD.ID_disciplina = D.ID_disciplina
+ORDER BY
+    C.nome_curso, A.nome_aluno, D.nome_disciplina;
+
