@@ -1,5 +1,4 @@
 import os
-import time
 from services.tools.name_CESAL import cesal_logo
 from services.usuario_services.service_login_usuario import fazer_login_usuario
 from services.menus_principais.menu_principal_adm import menu_principal_adm

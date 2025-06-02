@@ -4,6 +4,7 @@ from services.tools.name_CESAL import cesal_logo
 from services.aluno_services.service_menu_aluno import menu_aluno
 from services.professor_services.service_menu_prof import menu_professor
 from services.curso_services.service_menu_curso import menu_curso
+from services.matricula_services.service_menu_matricula import menu_matricula
 
 def menu_principal_usuario():
     while True:
@@ -16,6 +17,7 @@ def menu_principal_usuario():
         print("\n1 - Central Aluno")
         print("\n2 - Central Professor")
         print("\n3 - Central Curso")
+        print("\n4 - Central Matrícula")
         print("\n0 - Sair")
         print("")
         
@@ -27,6 +29,8 @@ def menu_principal_usuario():
                 menu_professor()
             elif opcao == 3:
                 menu_curso()
+            elif opcao == 4:
+                menu_matricula()
             elif opcao == 0:
                 print("Saindo do sistema...")
                 time.sleep(2)

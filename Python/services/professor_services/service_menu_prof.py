@@ -13,16 +13,13 @@ def menu_professor():
         print(f"-" * 30)
         print("         MENU PROFESSOR       ")
         print(f"-" * 30)
-        print("")
-        print("1 - Cadastrar Professor")
-        print("2 - Lista de Professores")
-        print("3 - Editar Professor")
-        print("4 - Remover Professor")
-        print("0 - Voltar ao Menu Principal")
-        print("")
-        
+        print("\n1 - Cadastrar Professor")
+        print("\n2 - Lista de Professores")
+        print("\n3 - Editar Professor")
+        print("\n4 - Remover Professor")
+        print("\n0 - Voltar ao Menu Principal")
         try:
-            opcao = int(input("Digite a opção desejada: "))
+            opcao = int(input("\nDigite a opção desejada: "))
             if opcao == 1:
                 cadastro_professor()
             elif opcao == 2:

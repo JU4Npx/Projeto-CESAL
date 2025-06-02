@@ -1,7 +1,7 @@
 import bcrypt
 import base64
 from config.conexao import conexaoBD
-
+import pwinput
 
 def fazer_login_usuario(): 
     try:
@@ -15,7 +15,7 @@ def fazer_login_usuario():
             return None, None
 
         senha_hash_base64, role, nome_usuario = resultado
-        senha_digitada = input("Digite sua senha: ")
+        senha_digitada = pwinput.pwinput(prompt ="Digite sua senha: ", mask='*')
         senha_bytes = senha_digitada.encode('utf-8')
         senha_hash = base64.b64decode(senha_hash_base64)
 

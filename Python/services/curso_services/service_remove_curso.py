@@ -23,6 +23,7 @@ def remover_curso():
                 cursor.execute("DELETE FROM curso WHERE ID_curso = %s", (ID_busca,))
                 con.commit()
                 print(f"Curso de ID {ID_busca}, foi removido com sucesso!")
+                input("Pressione ENTER para continuar...")
                 break
         except Exception as e:
             print(f"Erro ao tentar remover curso")

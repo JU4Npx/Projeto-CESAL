@@ -13,16 +13,14 @@ def menu_aluno():
         print(f"-" * 30)
         print("         MENU ALUNO       ")
         print(f"-" * 30)
-        print("")
-        print("1 - Cadastrar Aluno")
-        print("2 - Lista de Alunos")
-        print("3 - Editar Aluno")
-        print("4 - Remover Aluno")
-        print("0 - Voltar ao Menu Principal")
-        print("")
+        print("\n1 - Cadastrar Aluno")
+        print("\n2 - Lista de Alunos")
+        print("\n3 - Editar Aluno")
+        print("\n4 - Remover Aluno")
+        print("\n0 - Voltar ao Menu Principal")
         
         try:
-            opcao = int(input("Digite a opção desejada: "))
+            opcao = int(input("\nDigite a opção desejada: "))
             if opcao == 1:
                 cadastro_aluno()
             elif opcao == 2:

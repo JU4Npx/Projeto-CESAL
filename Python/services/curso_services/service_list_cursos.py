@@ -129,4 +129,90 @@ def editar_lista_curso():
             print("Erro ao buscar curso")
             print(f"Erro {e}")
     cursor.close()
-    con.close()                                
+    con.close()
+
+
+def lista_curso_disciplina():
+    con = conexaoBD()
+    cursor = con.cursor()
+    cursor.execute("""SELECT
+    c.nome_curso AS Curso,
+    d.nome_disciplina AS Disciplina
+FROM
+    curso AS c
+JOIN
+    curso_disciplina AS cd ON c.ID_curso = cd.ID_curso
+JOIN
+    disciplina AS d ON cd.ID_disciplina = d.ID_disciplina
+ORDER BY
+    c.nome_curso, d.nome_disciplina;""")
+    dados_curso_disciplina = cursor.fetchall()
+    print(f"-" * 30)
+    print("        LISTA DE CURSOS        ")
+    print(f"-" * 30)
+    print("")
+    for dado in dados_curso_disciplina:
+        print(f"Nome: {dado[0]}  Disciplina: {dado[1]}")
+        print(f"-" * 120)
+    input("Pressione ENTER para voltar ao menu...")
+    cursor.close()
+    con.close()                               
+
+def lista_aluno_curso():
+    con = conexaoBD()
+    cursor = con.cursor()
+    cursor.execute("""SELECT
+    c.nome_curso AS Curso,
+    a.nome_aluno AS Aluno,
+    a.email_aluno AS Email_Aluno
+FROM
+    curso AS c
+JOIN
+    matricula AS m ON c.ID_curso = m.ID_curso
+JOIN
+    aluno AS a ON m.ID_aluno = a.ID_aluno
+ORDER BY
+    c.nome_curso, a.nome_aluno;""")
+    dados_aluno_curso = cursor.fetchall()
+    print(f"-" * 30)
+    print("     LISTA DE ALUNOS POR CURSO        ")
+    print(f"-" * 30)
+    print("")
+    for dado in dados_aluno_curso:
+        print(f"Curso: {dado[0]}  Aluno: {dado[1]}  Email: {dado[2]}")
+        print(f"-" * 120)
+    input("Pressione ENTER para voltar ao menu...")
+    cursor.close()
+    con.close()
+
+
+def lista_aluno_disciplina_curso():
+    con = conexaoBD()
+    cursor = con.cursor()
+    cursor.execute("""SELECT
+    C.nome_curso AS Curso,
+    A.nome_aluno AS Aluno,
+    D.nome_disciplina AS Disciplina
+FROM
+    curso AS C
+INNER JOIN
+    matricula AS M ON C.ID_curso = M.ID_curso
+INNER JOIN
+    aluno AS A ON M.ID_aluno = A.ID_aluno
+INNER JOIN
+    curso_disciplina AS CD ON C.ID_curso = CD.ID_curso
+INNER JOIN
+    disciplina AS D ON CD.ID_disciplina = D.ID_disciplina
+ORDER BY
+    C.nome_curso, A.nome_aluno, D.nome_disciplina;""")
+    dados_aluno_disciplina_curso = cursor.fetchall()
+    print(f"-" * 60)
+    print("     LISTA DE ALUNOS E DISCIPLINAS POR CURSO        ")
+    print(f"-" * 60)
+    print("")
+    for dado in dados_aluno_disciplina_curso:
+        print(f"Curso: {dado[0]}  Aluno: {dado[1]}  Disciplina: {dado[2]}")
+        print(f"-" * 120)
+    input("Pressione ENTER para voltar ao menu...")
+    cursor.close()
+    con.close()
