@@ -6,6 +6,7 @@ import os
 
 def matricula():
         while True:
+            os.system('cls')
             con = conexaoBD()
             cursor = con.cursor()
             cursor.execute("SELECT * FROM aluno ORDER BY ID_aluno")
